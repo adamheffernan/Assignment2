@@ -1,5 +1,4 @@
-%% Assignment 2
-% By: Anton Campbell, 100975168
+
 %% Question 1 - Simple Cases
 % Two simple cases of 2-D electrostatic potential were created. The y
 % dimension length was set to be $W=60$. The x dimension length was
