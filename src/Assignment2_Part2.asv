@@ -1,0 +1,134 @@
+function Assignment2_Part2(part)
+%% Function for Part 2 of Assignment 2 4700. Adam Heffernan 100977570
+% Set Part to 1 for 2A, 2 for 2B, 3 for 2C and 4 for 2D 
+
+%Variables
+len=200;
+width=100;%Height
+sigma_map=ones(width,len);
+F=zeros(1,len*width);
+G=zeros(len*width,len*width);
+
+sigma_map(:,:) = 1;
+sigma_map(((3/4)*(width)):width,(len/3):(2*(len/3)))=1e-2;
+sigma_map(1:(width/4),(len/3):(2*(len/3)))=1e-2;
+
+%% Part 2A
+if part == 1 
+for i=1:len
+    for j=1:width
+        Updater=j+(i-1)*width;
+        
+        if(i==1)%left
+           
+            G(Updater,Updater)=1;
+            F(Updater)=1;
+            
+        elseif(i==len)%right
+            
+            G(Updater,Updater)=1;
+            F(Updater)=0;
+            
+        elseif(j==1)%bottom
+ 
+            Nyu=j+1+(i-1)*width;
+            Nxu=j+(i)*width;
+            Nxd=j+(i-1-1)*width;
+
+            Ryu=(sigma_map(j,i)+sigma_map(j+1,i))/2.0;
+            Rxu=(sigma_map(j,i)+sigma_map(j,i+1))/2.0;
+            Rxd=(sigma_map(j,i)+sigma_map(j,i-1))/2.0;
+            
+            
+            G(Updater,Updater)=-(Ryu+Rxu+Rxd);
+            G(Updater,Nyu)=Ryu;
+            G(Updater,Nxu)=Rxu;
+            G(Updater,Nxd)=Rxd;
+            
+            
+        elseif(j==width)%top
+
+            Nyd=j-1+(i-1)*width;
+            Nxu=j+(i)*width;
+            Nxd=j+(i-1-1)*width;
+
+            Ryd=(sigma_map(j,i)+sigma_map(j-1,i))/2.0;
+            Rxu=(sigma_map(j,i)+sigma_map(j,i+1))/2.0;
+            Rxd=(sigma_map(j,i)+sigma_map(j,i-1))/2.0;
+            
+            
+            G(Updater,Updater)=-(Ryd+Rxu+Rxd);
+            G(Updater,Nyd)=Ryd;
+            G(Updater,Nxu)=Rxu;
+            G(Updater,Nxd)=Rxd;
+            
+        else%middle
+            Nyu=j+1+(i-1)*width;
+            Nyd=j-1+(i-1)*width;
+            Nxu=j+(i)*width;
+            Nxd=j+(i-1-1)*width;
+
+            Ryu=(sigma_map(j,i)+sigma_map(j+1,i))/2.0;
+            Ryd=(sigma_map(j,i)+sigma_map(j-1,i))/2.0;
+            Rxu=(sigma_map(j,i)+sigma_map(j,i+1))/2.0;
+            Rxd=(sigma_map(j,i)+sigma_map(j,i-1))/2.0;
+            
+            
+            G(Updater,Updater)=-(Ryu+Ryd+Rxu+Rxd);
+            G(Updater,Nyu)=Ryu;
+            G(Updater,Nyd)=Ryd;
+            G(Updater,Nxu)=Rxu;
+            G(Updater,Nxd)=Rxd;
+            
+        end
+            
+            
+            
+        
+    end
+end
+
+F=F';
+
+V=G\F;
+V_2D = zeros(width,len);
+for i=1:len
+    for j=1:width
+
+
+        Updater=j+(i-1)*width;
+
+        V_2D(j,i)=V(Updater);
+
+    end
+end    
+
+[Ex,Ey] = gradient(-V_2D);
+E_Magnitude = sqrt((Ex.^2)+(Ey.^2));
+figure(15)
+contourf(V_2D,30)
+figure(16)
+quiver(Ex,Ey);
+title('Figure 16: Electric Field Vector Map');
+ylabel('y position');
+xlabel('x position');
+xlim([0 len]);
+ylim([0 width]);
+figure(17)
+surf(sigma_map,'EdgeColor','flat')
+view(0,90)
+figure(18)
+quiver(Ex.*,Ey.*sigma_map)
+%% Part 2B     
+elseif part ==2 
+    
+%% Part 2C  
+elseif part ==3
+    
+%%Part 2D 
+elseif part ==4
+    
+else 
+    return
+end
+end

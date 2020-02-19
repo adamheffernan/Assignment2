@@ -1,6 +1,6 @@
-function Assignment2_Part1(partA)
+function Assignment2_Part1(part)
 
-%Input a 1 or a 0 to do Part A or part B respectively 
+%Input a 1 to simulate Part 1A or a 2 to run part 1B
  
 %Variables
 len=50;
@@ -10,7 +10,8 @@ iter=100;
 sigma_map=ones(width,len);
 F=zeros(1,len*width);
 G=zeros(len*width,len*width);
-if partA == 1
+%% Part 1A
+if part == 1
 for i=1:len
     for j=1:width
         Updater=j+(i-1)*width;
@@ -84,7 +85,9 @@ xlabel('x position');
 cb3=colorbar;
 cb3.Label.String = 'V (V)';
 view(0,90);
-else 
+
+%% Part 1 B 
+elseif part == 2 
 for i=1:len
     for j=1:width
         Updater=j+(i-1)*width;
