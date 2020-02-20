@@ -82,8 +82,8 @@ surf(V_1D);
 title('Figure 1 Voltage Map for Finite Difference Method Single Boundary' );
 ylabel('y position');
 xlabel('x position');
-cb3=colorbar;
-cb3.Label.String = 'V (V)';
+c=colorbar;
+c.Label.String = 'V (V)';
 view(0,90);
 
 %% Part 1 B 
@@ -157,8 +157,8 @@ surf(V_2D);
 title(' Figure 1 Voltage Map for Finite Difference Method 2 raised potentials');
 ylabel('y position');
 xlabel('x position');
-cb3=colorbar;
-cb3.Label.String = 'Volts';
+c=colorbar;
+c.Label.String = 'Volts';
 view(0,90);
 
 new_width=width-1;
@@ -179,8 +179,8 @@ surf(V_analytical)
 title('Figure 2 Voltage Map for Analytical Solution');
 ylabel('y position');
 xlabel('x position');
-cb3=colorbar;
-cb3.Label.String = 'Volts';
+c=colorbar;
+c.Label.String = 'Volts';
 view(0,90);
 else 
     return
