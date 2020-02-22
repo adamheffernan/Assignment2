@@ -1,6 +1,6 @@
 function Assignment2_Part2(part)
 %% Function for Part 2 of Assignment 2 4700. Adam Heffernan 100977570
-% Set Part to 1 for 2A, 2 for 2B, 3 for 2C-1, 4 for 2C-2, and 5 for 2D
+% Set Part to 1 for 2A, 2 for 2B, 3 for 2C and 4 for 2D
 
 %% Part 2A
 if part == 1
@@ -109,7 +109,7 @@ if part == 1
     xlim([1 len])
     ylim([1 width])
     c=colorbar;
-    c.Label.String = 'E (V/m^2)';
+    c.Label.String = 'V/$m^2$';
     
     figure(6)
     surf(sigma_map,'EdgeColor','none')
@@ -120,7 +120,7 @@ if part == 1
     xlim([1 len])
     ylim([1 width])
     c=colorbar;
-    c.Label.String = '\sigma (S/m)';
+    c.Label.String = '$\sigma$';
     
     figure(7)
     quiver(Ex.*sigma_map,Ey.*sigma_map)
@@ -130,7 +130,7 @@ if part == 1
     xlim([1 len])
     ylim([1 width])
     c=colorbar;
-    c.Label.String = 'J_d (A/m^2)';
+    c.Label.String = '$J_d$';
     
     
     %% Part 2B Multiple different mesh sizes 
