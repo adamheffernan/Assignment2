@@ -135,13 +135,11 @@ if part == 1
     %% Part 2B Multiple different mesh sizes 
     
 elseif part == 2
-        clear F
+        clear B
         clear G
-        leftContact = (1:5);
-        rightContact = (1:5);
-        
     for multiplier=1:5 
-       
+        
+        
         %Variables
         len=30*multiplier;
         width=20*multiplier;
@@ -352,8 +350,7 @@ elseif part == 4
     width=20;
     F=zeros(1,len*width);
     G=zeros(len*width,len*width);
-    leftContact =(1:len);
-    rightContact =(1:len);
+    leftContact = 
      for varrying_length=1:len
         %Set conductivity map
         sigma_map=ones(width,len);
