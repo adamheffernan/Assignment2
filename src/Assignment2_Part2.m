@@ -225,9 +225,10 @@ elseif part == 2
             end
         end
         
-        [Ex,~]=gradient(-V_2D);
-        leftContact(multiplier)=sum(sigma_map(:,1).*Ex(:,1));
-        rightContact(multiplier)=sum(sigma_map(:,len).*Ex(:,len));
+        [Ex,Ey]=gradient(-V_2D);
+        Emag = sqrt(Ex.^2 + Ey.^2);
+        leftContact(multiplier)=sum(sigma_map(:,1).*Emag(:,1));
+        rightContact(multiplier)=sum(sigma_map(:,len).*Emag(:,len));
         
     end
     
@@ -330,9 +331,10 @@ elseif part ==3
             end
         end
         
-        [Ex,~]=gradient(-V_2D);        
-        leftContact(varrying_width)=sum(sigma_map(:,1).*Ex(:,1));
-        rightContact(varrying_width)=sum(sigma_map(:,len).*Ex(:,len));
+        [Ex,Ey]=gradient(-V_2D);   
+        Emag = sqrt(Ex.^2 + Ey.^2);
+        leftContact(varrying_width)=sum(sigma_map(:,1).*Emag(:,1));
+        rightContact(varrying_width)=sum(sigma_map(:,len).*Emag(:,len));
         
     end
     figure(9)
@@ -343,7 +345,7 @@ elseif part ==3
     xlim([0 20])
     hold off;
     title('Current v Varrying Width')
-    xlabel('Width of Boxes')
+    xlabel('Width Variation from Original Mesh Size')
     ylabel('Relative Current')
     %% Part 2C-2 Varrying Box Height
 elseif part == 4
@@ -432,9 +434,10 @@ elseif part == 4
             end
         end
         
-        [Ex,~]=gradient(-V_2D);        
-        leftContact(varrying_length)=sum(sigma_map(:,1).*Ex(:,1));
-        rightContact(varrying_length)=sum(sigma_map(:,len).*Ex(:,len));
+        [Ex,Ey]=gradient(-V_2D);   
+        Emag = sqrt(Ex.^2 + Ey.^2);      
+        leftContact(varrying_length)=sum(sigma_map(:,1).*Emag(:,1));
+        rightContact(varrying_length)=sum(sigma_map(:,len).*Emag(:,len));
         
     end
     figure(10)
@@ -445,7 +448,7 @@ elseif part == 4
     xlim([0 30])
     hold off;
     title('Current v Varrying Length')
-    xlabel('Length of boxes')
+    xlabel('Length Variation from Original Mesh Size')
     ylabel('Relative Current')
     
 
@@ -537,9 +540,10 @@ elseif part == 5
             end
         end
         
-        [Ex,~]=gradient(-V_2D);        
-        leftContact(multiplier)=sum(sigma_map(:,1).*Ex(:,1));
-        rightContact(multiplier)=sum(sigma_map(:,len).*Ex(:,len));
+        [Ex,Ey]=gradient(-V_2D);   
+        Emag = sqrt(Ex.^2 + Ey.^2);       
+        leftContact(multiplier)=sum(sigma_map(:,1).*Emag(:,1));
+        rightContact(multiplier)=sum(sigma_map(:,len).*Emag(:,len));
         
     end
     figure(11)

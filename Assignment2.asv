@@ -102,6 +102,5 @@ Assignment2_Part2(5)
 % Figure 11 shown above is plotting the relative current of the mesh grid
 % versus varrying conductivity in the grid. As the conductvity of the boxes
 % is increased the overall resistance in the mesh grid decreases. The
-% current should increase to comensate for $V = I * R$. As shown above in
-% figure 11, the current increases with increasing conductivity. 
+% current should increase to comensate for $V = I * R$. 
 %
